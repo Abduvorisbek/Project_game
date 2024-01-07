@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background: linear-gradient(to bottom, #66a3ff, #007BFF);
+            color: #333;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        h1 {
+            color: #ffc107;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0056b3;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #003366;
+        }
+
+        a#create-game {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            background-color: #ffc107;
+            color: #333;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        a#create-game:hover {
+            background-color: #ff8c00;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ffc107;
+            margin: 20px 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 15px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        li:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <h1>Games List</h1>
+    <a href="{% url 'games:create' %}" id="create-game">Create game</a>
+    <hr>
+    <ul>
+        {% for game in games %}
+        <a href="{% url 'games:detail' pk=game.id %}">
+            <li>{{ game.name }}</li>
+        </a>
+        {% endfor %}
+    </ul>
+</body>
+</html>

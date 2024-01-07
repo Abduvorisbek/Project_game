@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background: #3498db;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+
+         h1 {
+            color: #ffc107;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            background-color: #ffc107;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a button {
+            background-color: #ffc107;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        a button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rostan ham shu o'yinni o'chirmoqchimisiz? {{ game.name }}</h1>
+    <form action="{% url 'games:delete' pk=game.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Ha</button>
+    </form>
+    <a href="{% url 'games:list' %}"><button>Yo'q</button></a>
+</body>
+</html>
